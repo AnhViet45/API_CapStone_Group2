@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS v5 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+
+    <!-- Font google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="../../css/main.min.css">
+    <style>
+        #spinner {
+            height: 100vh;
+            width: 100vw;
+            background: #e5e5e5;
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 10;
+            display: none;
+            /* coolors */
+        }
+    </style>
+    <title>CyberPhone - Admin</title>
+</head>
+
+<body>
+    <div id="spinner"></div>
+    <header class="admin_header">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <i class="fa fa-robot"></i>
+                    Cyber Phone
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link active" aria-current="page" href="../../index.html">
+                            <div><i class="fa fa-home"></i></div>
+                            Home
+                        </a>
+                        <a class="nav-link" href="../../customer/view/customer.html">
+                            <div><i class="fa fa-store"></i></div>
+                            Store
+                        </a>
+                        <a class="nav-link" href="#">
+                            <div><i class="fa fa-shopping-cart"></i></div>
+                            Cart
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="phone_mgmt">
+        <div class="container">
+            <div class="phone_header">
+                <h3>Phone Management</h3>
+                <div class="btn_groups">
+                    <div class="input-group flex-nowrap search">
+                        <button class="btn btn-check btnSearch"><i class="fa fa-search"></i></button>
+                        <input type="text" id="inputSearch" class="form-control" placeholder="Search for name..." aria-label="Search" onkeyup="searchByName()">
+                    </div>
+                    <div class="dropdown filter">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-funnel-dollar"></i>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" onclick="sortProductsAscending()">Sort Ascending Price</a></li>
+                            <li><a class="dropdown-item" onclick="sortProductsDescending()">Sort Descending Price</a></li>
+                        </ul>
+                    </div>
+                    <div class="btnAdd">
+                        <button type="button" class="btn btn-primary btn_add" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">
+                            <i class="fa fa-plus-circle"></i>
+                            Add Phone
+                        </button>
+                    </div>
+                </div>        
+            </div>
+
+            <div class="phone_table">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Photo</th>
+                            <th>Description</th>
+                            <th>
+                                <i class="fa fa-cog"></i>
+                                Action
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblDanhSachSP"></tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modalPhone modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title" id="exampleModalLabel">Phone Management</h1>
+                </div>
+                <div class="modal-body">
+                    <form role="form" id="myForm">
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-mobile-alt"></i></span>
+                                </div>
+                                <input type="text" name="name" id="name" class="form-control input-sm"
+                                    placeholder="Phone Name">
+                            </div>
+
+                            <span class="sp-thongbao" id="tbName"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-dollar-sign"></i></span>
+                                </div>
+                                <input type="number" name="price" id="price" class="form-control input-sm"
+                                    placeholder="Price">
+                            </div>
+                            <span class="sp-thongbao" id="tbPrice"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-mobile"></i></span>
+                                </div>
+                                <input type="text" name="screen" id="screen" class="form-control input-sm"
+                                    placeholder="Screen">
+                            </div>
+
+                            <span class="sp-thongbao" id="tbScreen"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-camera"></i></span>
+                                </div>
+                                <input type="text" name="backCam" id="backCam" class="form-control input-sm"
+                                    placeholder="Back Camera">
+                            </div>
+                            <span class="sp-thongbao" id="tbBackCam"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-camera"></i></span>
+                                </div>
+                                <input type="text" name="frontCam" id="frontCam" class="form-control"
+                                    placeholder="Front Camera">
+                            </div>
+
+                            <span class="sp-thongbao" id="tbFrontCam"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-link"></i></span>
+                                </div>
+                                <input type="text" name="link" id="link" class="form-control input-sm"
+                                    placeholder="Image link">
+                            </div>
+                            <span class="sp-thongbao" id="tbLink"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-comment"></i></span>
+                                </div>
+                                <input type="text" name="desc" id="desc" class="form-control input-sm"
+                                    placeholder="Description">
+                            </div>
+                            <span class="sp-thongbao" id="tbDesc"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-signature"></i></span>
+                                </div>
+                                <select class="form-control" id="brand">
+                                    <option>Select Brand</option>
+                                    <option>Apple</option>
+                                    <option>Samsung</option>
+                                </select>
+                            </div>
+
+                            <span class="sp-thongbao" id="tbBrand"></span>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnAddPhone" type="button" onclick="createProduct()" class="btn btn-warning">Add Phone</button>
+                    <button id="btnUpdate" type="button" class="btn btn-primary" style="display: none;" onclick="updateProduct()">Update</button>
+                    <button type="button" class="btn btn-dark" aria-label="Close" onclick="resetForm()" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="admin_footer">
+        <div class="footer_top">
+            <p>Get connected with us on social networks: </p>
+            <div class="footer_icon">
+                <span><i class="fab fa-facebook-f"></i></span>
+                <span><i class="fab fa-twitter"></i></span>
+                <span><i class="fab fa-google"></i></span>
+                <span><i class="fab fa-instagram"></i></span>
+                <span><i class="fab fa-linkedin"></i></span>
+                <span><i class="fab fa-github"></i></span>
+            </div>
+        </div>
+        <div class="footer_bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-3 footer_item">
+                        <h5>
+                            <i class="fa fa-robot"></i>
+                            CYBER PHONE
+                        </h5>
+                        <p>We pride ourselves on our efficiency and hard work, but most of all our ability to source you
+                            the
+                            best quality and best value products and devices in the market.</p>
+                    </div>
+                    <div class="col-3 footer_item">
+                        <h5>BRANDS</h5>
+                        <ul>
+                            <a>
+                                <li>iPhone</li>
+                            </a>
+                            <a>
+                                <li>Samsung</li>
+                            </a>
+                            <a>
+                                <li>Xiaomi</li>
+                            </a>
+                            <a>
+                                <li>Oppo</li>
+                            </a>
+                        </ul>
+                    </div>
+                    <div class="col-3 footer_item">
+                        <h5>USEFUL LINKS</h5>
+                        <ul>
+                            <a>
+                                <li>Pricing</li>
+                            </a>
+                            <a>
+                                <li>Settings</li>
+                            </a>
+                            <a>
+                                <li>Orders</li>
+                            </a>
+                            <a>
+                                <li>Help</li>
+                            </a>
+                        </ul>
+                    </div>
+                    <div class="col-3 footer_item">
+                        <h5>CONTACT</h5>
+                        <ul>
+                            <li>
+                                <i class="fa fa-home"></i>
+                                Da Nang, Thanh Khe, VN
+                            </li>
+                            <li>
+                                <i class="fa fa-envelope"></i>
+                                cyberphone@mail.com
+                            </li>
+                            <li>
+                                <i class="fa fa-phone"></i>
+                                +01 234 567 89
+                            </li>
+                            <li>
+                                <i class="fa fa-fax"></i>
+                                +01 234 567 89
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="text_bottom"><i class="far fa-copyright"></i> 2022 Copyright:
+                    <a href="#">Cyber Phone</a>
+                </p>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS v5 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- axios -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js"
+        integrity="sha512-emSwuKiMyYedRwflbZB2ghzX8Cw8fmNVgZ6yQNNXXagFzFOaQmbvQ1vmDkddHjm5AITcBIZfC7k4ShQSjgPAmQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- my controller -->
+    <script src="../controllers/controller.js"></script>
+    <!-- my validation -->
+    <script src="../controllers/validation.js"></script>
+    <!-- my admin JS -->
+    <script src="../admin.js"></script>
+</body>
+
+</html>

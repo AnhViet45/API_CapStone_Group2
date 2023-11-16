@@ -1,0 +1,91 @@
+footer.admin_footer {
+    @include colorGradient($blue-2, $purple-2);
+    color: $white-3;
+
+    .footer_top {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: $num-30;
+        border-bottom: 1px solid $white-3;
+
+        p {
+            margin-bottom: 0;
+        }
+
+        .footer_icon {
+            margin-left: $num-30;
+
+            span {
+                margin: 0 $num-20;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .footer_bottom {
+        padding-top: $num-50;
+        padding-bottom: $num-20;
+
+        .container {
+            .row {
+                .footer_item {
+                    padding: 0;
+                    padding-right: $num-20;
+
+                    h5 {
+                        margin-bottom: $num-20;
+                    }
+
+                    &:nth-child(2) {
+                        padding-left: $num-30 + 10;
+                    }
+
+                    &:nth-child(2), &:nth-child(3) {
+                        padding-right: $num-50;
+                    }
+
+                    &:nth-child(2), &:nth-child(3), &:nth-child(4) {
+                        ul {
+                            list-style: none;
+                            padding: 0;
+
+                            a {
+                                text-decoration: underline;
+
+                                li {
+                                    margin-bottom: $num-16;
+                                }
+                            }
+                            
+                        }
+                    }
+
+                    &:nth-child(4) {
+                        padding-right: 0;
+
+                        ul {
+                            li {
+                                margin-bottom: $num-16;
+                                i {
+                                    margin-right: $num-20;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                
+            }
+            p.text_bottom {
+                text-align: center;
+                padding-top: $num-50;
+                
+                a {
+                    color: $white-3;
+                }
+               
+            }
+        }
+    }
+}

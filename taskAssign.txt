@@ -1,0 +1,25 @@
+PHÂN CHIA CÔNG VIỆC: 
+Lê Thị Kim Ngân 
+    - Xây dựng UI admin page 
+    - Chức năng trong Admin page: 
+        - Update
+        - Delete 
+        - Search sản phẩm theo tên 
+    - Chức năng trong Customer page:
+        - Thêm sản phẩm cho giỏ hàng 
+        - Xử lý giỏ hàng 
+Phạm Anh Việt 
+    - Xây dựng UI customer page 
+    - Chức năng trong Admin page:
+        - Render sản phẩm 
+        - Edit 
+        - Filter sản phẩm theo giá 
+    - Chức năng trong Customer page:
+        - Render danh sách sản phẩm 
+        - Filter sản phẩm theo brand 
+        - Xử lý giỏ hàng
+
+KẾT QUẢ CÔNG VIỆC:  
+- link github: https://github.com/nganle2911/capstone-phone-api/tree/main 
+- link deploy: https://api-capstone-two.vercel.app/ 
+- link youtube: https://www.youtube.com/watch?v=0UsSGnTr5fs 

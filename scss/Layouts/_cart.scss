@@ -1,0 +1,54 @@
+.shoppingCart {
+
+    .offcanvas-header {}
+
+    .offcanvas-body {
+        .cart_table {
+            #listCart {
+                tr {
+                    td {
+                        &:nth-child(4) {
+                            span {
+                                cursor: pointer;
+
+                                &:nth-child(2) {
+                                    margin: 0 $num-10;
+                                }
+                            }
+                        }
+
+                        &:nth-child(6) {
+                            transition: all .3s ease-in-out;
+                            cursor: pointer;
+
+                            &:hover {
+                                color: $red-1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .offcanvas-footer {
+        // @include colorGradient($blue-2, $purple-2); 
+        margin: 0;
+        // margin-bottom: $num-20;
+        // padding: $num-30 0;
+        text-align: center;
+
+        .col-6 {
+            padding: $num-20 0;
+
+            h4 {
+                color: $white-3;
+                margin: 0;
+            }
+
+            &:nth-child(2) {
+                cursor: pointer;
+            }
+        }
+    }
+}

@@ -1,0 +1,40 @@
+header.admin_header {
+
+    .navbar {
+        background-color: $black-2;
+
+        .container {
+            .navbar-brand {
+                color: $white-3;
+                font-size: $num-20 + 5;
+
+                i {
+                    margin-right: $num-3 + 2;
+                }
+            }
+
+            .navbar-toggler {
+                background: $white-3;
+            }
+
+            .navbar-collapse {
+                justify-content: flex-end;
+
+                .navbar-nav {
+                    .nav-link {
+                        text-align: center;
+                        color: $white-3;
+                        margin-left: $num-20;
+                        transform: scale(1);
+                        transition: 0.3s ease-in-out;
+                        
+                        &:hover {
+                            transform: scale(1.3);
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+}

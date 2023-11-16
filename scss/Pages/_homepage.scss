@@ -1,0 +1,55 @@
+.homepage {
+    background-image: url(../assets/img/bg.jpeg);
+    background-size: cover;
+    background-position: center bottom;
+    
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+
+        a {
+            text-decoration: none;
+
+            .item {
+                .item_pic {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: $num-250;
+                    height: $num-250;
+                    background: $white-1;
+                    border-radius: $num-75;
+                    margin: auto $num-150;
+                    transform: scale(1);
+                    transition: all 0.3s ease-in-out;
+
+                    img {
+                        width: 100%;
+                    }
+                }
+
+                h1 {
+                    color: $white-2;
+                    text-align: center;
+                    margin-top: $num-20;
+                    transform: scale(1);
+                    transition: all 0.3s ease-in-out;
+                }
+
+                &:hover {
+                    .item_pic {
+                        border: 5px solid $yellow-1;
+                        transform: scale(0.9);
+                    }
+                    h1 {
+                        color: $yellow-1;
+                        transform: scale(0.7);
+                    }
+                }
+            }
+
+        }
+    }
+}

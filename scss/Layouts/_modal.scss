@@ -1,0 +1,44 @@
+.modalPhone {
+    .modal-content {
+        background-color: $white-3;
+        border-radius: 0;
+
+        .modal-header {
+            .modal-title {
+                margin: 0 auto;
+                font-size: $num-30;
+            }
+        }
+
+        .modal-body {
+            
+            form {
+                background: $pink-2;
+                padding: $num-16;
+                border-radius: $num-5;
+                height: auto;
+
+                .form-group {
+                    padding-bottom: $num-10;
+
+                    .input-group {
+                        .input-group-prepend {
+                            padding: $num-15;
+                            background: $pink-3;
+
+                            .input-group-text {
+                                border: none;
+                                padding: 0;
+                                background: none;
+                            }
+                        }
+                    }
+
+                    .sp-thongbao {
+                        color: red;
+                    }
+                }
+            }
+        }
+    }
+}
